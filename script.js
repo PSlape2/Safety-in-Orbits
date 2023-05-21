@@ -13,11 +13,11 @@ let v1;
 let v2;
 let v3;
 let thrustVector;
-let camvect;
 let targetRotation;
 let nextRotation;
 
 let rotationX;
+let rotationY;
 let rotationZ;
 
 let rocket;
@@ -55,16 +55,17 @@ function preload() {
 }
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  pg = createGraphics(300, 300);
   
+  pg = createGraphics(300, 300);
   v1 = createVector(200, 0, 0);
   v2 = createVector(0, 0, 10);
   v3 = createVector(0, 0, 0);
-  camvect = createVector(0, 0, 0);
   def = createVector(0, 0, 0);
+  
   targetRotation = createVector(0, 0, 0);
   nextRotation = createVector(0, 0, 0);
   thrustVector = createVector(0, 0, 0);
+  
   rotationX = 0;
   rotationZ = 0;
   per = v1.x;
@@ -73,7 +74,6 @@ function setup() {
   slider = createSlider(1, 240, 5);
   slider.position(10, 10);
   slider.style('width', '300px');
-  
   
   cam = createCamera();
 }
@@ -97,13 +97,10 @@ function Earth() {
 
 function draw() {
   fr = slider.value();
-  resizeCanvas(windowWidth, windowHeight);
-  //scale(zoomfunc/3);
+  //resizeCanvas(windowWidth, windowHeight);
   frameRate(fr);
   background(205, 102, 94);
   backgrounds();
-  //background(spacestars);
-  //image(spacestars);
   orbitControl();
   Earth();
   addThrust();
@@ -186,10 +183,10 @@ function updateValues() {
 }
 
 function lookAtShip() {
-  if(keyCode == 69) {
+  if(keyCode == 82) {
     m = 1;
   }
-  if(keyCode == 82) {
+  if(keyCode == 69) {
     m = 2;
   }
   if(m == 1) {
