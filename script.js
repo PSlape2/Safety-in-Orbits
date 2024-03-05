@@ -89,7 +89,7 @@ function Earth() {
   translate(0,0,0);
   rotateY(frameCount * 0.01);
   strokeWeight(0);
-  texture(biden);
+  texture(earthtxtr);
   //texture(earthtxtr);
   model(planet); 
   pop();
